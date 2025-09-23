@@ -8,43 +8,33 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      AWS_REGION: ${{ secrets.AWS_REGION }}
       EB_APPLICATION: ${{ secrets.EB_APPLICATION }}
       EB_ENVIRONMENT: ${{ secrets.EB_ENVIRONMENT }}
-      EB_PLATFORM: PHP 8.2 running on 64bit Amazon Linux 2023  # <- CHANGE to match your EB console
+      EB_PLATFORM: PHP 8.4 running on 64bit Amazon Linux 2023/4.7.5
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          python-version: '3.x'
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Install CLIs
+      - name: Install EB CLI
         run: |
-          pip install --upgrade awscli awsebcli
+          pip install --upgrade awsebcli
           eb --version
           aws --version
 
-      - name: Verify AWS credentials
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: aws sts get-caller-identity
-
       - name: Initialize EB (non-interactive)
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          eb init "$EB_APPLICATION" --region "$AWS_REGION" --platform "$EB_PLATFORM" --verbose
+          set -eux
+          eb init "$EB_APPLICATION" --region "${{ secrets.AWS_REGION }}" --platform "$EB_PLATFORM" --verbose
           eb use "$EB_ENVIRONMENT" --verbose
 
       - name: Deploy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
+          set -eux
           eb deploy --staged --verbose
