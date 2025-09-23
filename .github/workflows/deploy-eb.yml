@@ -10,7 +10,6 @@ jobs:
     env:
       EB_APPLICATION: ${{ secrets.EB_APPLICATION }}
       EB_ENVIRONMENT: ${{ secrets.EB_ENVIRONMENT }}
-      EB_PLATFORM: PHP 8.4 running on 64bit Amazon Linux 2023/4.7.5
 
     steps:
       - uses: actions/checkout@v4
@@ -18,20 +17,22 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region:            ${{ secrets.AWS_REGION }}
 
       - name: Install EB CLI
         run: |
           pip install --upgrade awsebcli
           eb --version
-          aws --version
 
-      - name: Initialize EB (non-interactive)
+      - name: Initialize EB (use platform ARN from env)
         run: |
           set -eux
-          eb init "$EB_APPLICATION" --region "${{ secrets.AWS_REGION }}" --platform "$EB_PLATFORM" --verbose
+          PLATFORM_ARN=$(aws elasticbeanstalk describe-environments \
+            --environment-names "$EB_ENVIRONMENT" \
+            --query 'Environments[0].PlatformArn' --output text)
+          eb init "$EB_APPLICATION" --region "${{ secrets.AWS_REGION }}" --platform-arn "$PLATFORM_ARN" --verbose
           eb use "$EB_ENVIRONMENT" --verbose
 
       - name: Deploy
