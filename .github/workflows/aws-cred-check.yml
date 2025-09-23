@@ -19,7 +19,8 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Who am I?
-        run: |
+        run:
           set -eux
-          aws sts get-caller-identity
-          aws configure get region
+            aws sts get-caller-identity
+            echo "Region (env): ${AWS_REGION:-${AWS_DEFAULT_REGION:-unset}}"
+            aws configure get region || true
