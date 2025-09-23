@@ -7,6 +7,12 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      EB_APPLICATION: ${{ secrets.EB_APPLICATION }}
+      EB_ENVIRONMENT: ${{ secrets.EB_ENVIRONMENT }}
+      EB_PLATFORM: PHP 8.2 running on 64bit Amazon Linux 2023  # <- CHANGE to match your EB console
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -16,17 +22,29 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install EB CLI
-        run: pip install --upgrade awsebcli
+      - name: Install CLIs
+        run: |
+          pip install --upgrade awscli awsebcli
+          eb --version
+          aws --version
 
-      - name: Initialize EB and Deploy
+      - name: Verify AWS credentials
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          EB_APPLICATION: ${{ secrets.EB_APPLICATION }}
-          EB_ENVIRONMENT: ${{ secrets.EB_ENVIRONMENT }}
+        run: aws sts get-caller-identity
+
+      - name: Initialize EB (non-interactive)
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          eb init "$EB_APPLICATION" --region "$AWS_REGION" --platform "PHP"
-          eb use "$EB_ENVIRONMENT"
-          eb deploy --staged
+          eb init "$EB_APPLICATION" --region "$AWS_REGION" --platform "$EB_PLATFORM" --verbose
+          eb use "$EB_ENVIRONMENT" --verbose
+
+      - name: Deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          eb deploy --staged --verbose
