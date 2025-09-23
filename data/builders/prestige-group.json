@@ -1,0 +1,59 @@
+{
+  "last_updated": "2025-09-09",
+  "stats": {
+    "total_experience": "—",
+    "total_projects": 0,
+    "ongoing_projects": 0
+  },
+  "overview": {
+    "city": "Bengaluru",
+    "location": "Multiple (BLR)",
+    "about": "",
+    "rera_id": "",
+    "banks_supported": [
+      "SBI",
+      "HDFC",
+      "ICICI"
+    ],
+    "salient_features": [
+      "Clubhouse-ready layout",
+      "Green-certified materials"
+    ],
+    "key_facts": {
+      "launch": "",
+      "possession": ""
+    }
+  },
+  "floor_plans": [
+    {
+      "bhk": "2 BHK",
+      "carpet": "1050 sq.ft",
+      "price": "₹ 1.05 Cr",
+      "image": ""
+    }
+  ],
+  "amenities": [
+    "Pool",
+    "Gym",
+    "Clubhouse"
+  ],
+  "gallery": {
+    "images": [],
+    "video_url": ""
+  },
+  "home_loan": {
+    "loan_amount": "6000000",
+    "interest_rate": "8.25",
+    "tenure_years": "20"
+  },
+  "map": {
+    "lat": "",
+    "lng": ""
+  },
+  "faqs": [
+    {
+      "q": "Is RERA approved?",
+      "a": "RERA details shown in Overview."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+GM HOMEZ — Multi-Builder Pages + Admin (Prestige clone)
+===============================================================
+
+What this pack adds
+-------------------
+- Public builder pages for: Prestige, Sobha, Kolte Patil, Godrej, Brigade.
+- Per-builder Admin pages (reuse your existing /admin/login.php session).
+- JSON-backed content in /data/builders/*.json
+- EB postdeploy hook to set write permissions on /data and /uploads.
+
+How to use
+----------
+1) Upload this ZIP to your Elastic Beanstalk PHP app (root of the docroot).
+2) Deploy. EB will run .platform/hooks/postdeploy/01-perms.sh automatically.
+3) Visit one of these URLs:
+   • /prestige-group/            (public)
+   • /sobha-limited/
+   • /kolte-patil-developers/
+   • /godrej-properties/
+   • /brigade-group/
+
+   • /prestige-admin/            (admin, requires $_SESSION['admin']=true)
+   • /sobha-admin/
+   • /kolte-patil-admin/
+   • /godrej-admin/
+   • /brigade-admin/
+
+Notes
+-----
+- If you don't have includes/header.php or includes/footer.php, it's fine; they're optional.
+- Admin auth: make sure your login sets $_SESSION['admin']=true on success.
+- Images: upload to /uploads/builders/<slug>/ and paste absolute URLs like
+  /uploads/builders/sobha-limited/img1.jpg

@@ -1,0 +1,39 @@
+<?php
+$BASE=rtrim(dirname($_SERVER['SCRIPT_NAME']),'/'); if($BASE==='\\'||$BASE==='/') $BASE='';
+require_once __DIR__.'/../lib/builders.php'; @include __DIR__.'/../config.php';
+if(!isset($SLUG)||!$SLUG){ http_response_code(404); echo 'Missing builder slug'; exit; }
+$data=gm_builder_read($SLUG); $name=$data['name'];
+?><!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title><?= htmlspecialchars($name) ?> · GM HOMEZ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>:root{--s:rgba(148,163,184,.12);--m:#9fb2c0}body{background:#0b1620;color:#e6f0f6;font-family:Poppins,system-ui;margin:0}.container{max-width:1200px;margin:0 auto;padding:24px}.hero{padding:40px 0;border-bottom:1px solid var(--s)}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}.card{background:#0f2330;border:1px solid var(--s);border-radius:14px;padding:16px}h2{margin:28px 0 12px}.pill{display:inline-block;border:1px solid rgba(148,163,184,.3);padding:6px 10px;border-radius:999px;margin:6px 6px 0 0;font-size:.9rem}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.tab{padding:6px 12px;border:1px solid rgba(148,163,184,.3);border-radius:999px;cursor:pointer}.tab.active{background:#183243}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}img{max-width:100%;border-radius:10px}.muted{color:var(--m)}.section{padding:24px 0;border-top:1px solid var(--s)}a.btn{display:inline-block;background:linear-gradient(90deg,#5eead4,#60a5fa);padding:10px 16px;border-radius:999px;color:#06202c;text-decoration:none;font-weight:600}</style>
+</head><body><?php @include __DIR__.'/../includes/header.php'; ?>
+<div class="container">
+<section class="hero"><h1 style="margin:0 0 6px;font-size:clamp(26px,4vw,40px)"><?= htmlspecialchars($name) ?></h1>
+<div class="muted">Last updated: <?= htmlspecialchars($data['last_updated'] ?: '-') ?></div>
+<div class="stats">
+  <div class="card"><div class="muted">Total Experience</div><div style="font-size:22px"><?= htmlspecialchars($data['stats']['total_experience']) ?></div></div>
+  <div class="card"><div class="muted">Total Projects</div><div style="font-size:22px"><?= (int)$data['stats']['total_projects'] ?></div></div>
+  <div class="card"><div class="muted">Ongoing Projects</div><div style="font-size:22px"><?= (int)$data['stats']['ongoing_projects'] ?></div></div>
+  <div class="card"><a class="btn" href="/<?= htmlspecialchars($SLUG) ?>-admin/">Edit (Admin)</a></div>
+</div></section>
+<section class="section" id="overview"><h2>Overview</h2>
+<div class="grid"><div class="card"><strong>City</strong><br><?= htmlspecialchars($data['overview']['city']) ?><br><br>
+<strong>Location</strong><br><?= htmlspecialchars($data['overview']['location']) ?><br><br>
+<strong>RERA</strong><br><?= htmlspecialchars($data['overview']['rera_id']) ?><br><br>
+<strong>Key Facts</strong><ul><li>Launch: <?= htmlspecialchars($data['overview']['key_facts']['launch']) ?></li><li>Possession: <?= htmlspecialchars($data['overview']['key_facts']['possession']) ?></li></ul>
+<strong>Banks</strong><div><?php foreach($data['overview']['banks_supported'] as $b): ?><span class="pill"><?= htmlspecialchars($b) ?></span><?php endforeach; ?></div></div>
+<div class="card" style="grid-column:span 2"><strong>About</strong><p class="muted" style="line-height:1.7;white-space:pre-wrap"><?= htmlspecialchars($data['overview']['about']) ?></p>
+<strong>Salient Features</strong><ul><?php foreach($data['overview']['salient_features'] as $f): ?><li><?= htmlspecialchars($f) ?></li><?php endforeach; ?></ul></div></div></section>
+<section class="section" id="floorplans"><h2>Floor Plans</h2><div class="tabs" id="fpTabs"></div><div id="fpList" class="grid"></div></section>
+<section class="section" id="amenities"><h2>Amenities</h2><?php foreach($data['amenities'] as $a): ?><span class="pill"><?= htmlspecialchars($a) ?></span><?php endforeach; ?></section>
+<section class="section" id="gallery"><h2>Gallery</h2><?php if(!empty($data['gallery']['video_url'])): ?><div class="card" style="margin-bottom:12px"><iframe src="<?= htmlspecialchars($data['gallery']['video_url']) ?>" title="Video" width="100%" height="360" allowfullscreen style="border:0;border-radius:10px"></iframe></div><?php endif; ?><div class="grid"><?php foreach($data['gallery']['images'] as $img): ?><div class="card"><img src="<?= htmlspecialchars($img) ?>" alt="<?= htmlspecialchars($name) ?> image"></div><?php endforeach; ?></div></section>
+<section class="section" id="loan"><h2>Home Loan Defaults</h2><div class="grid">
+<div class="card"><div class="muted">Loan Amount</div><div style="font-size:22px">₹ <?= htmlspecialchars(number_format((float)$data['home_loan']['loan_amount'])) ?></div></div>
+<div class="card"><div class="muted">Interest Rate</div><div style="font-size:22px"><?= htmlspecialchars($data['home_loan']['interest_rate']) ?>%</div></div>
+<div class="card"><div class="muted">Tenure</div><div style="font-size:22px"><?= htmlspecialchars($data['home_loan']['tenure_years']) ?> years</div></div></section>
+<section class="section" id="map"><h2>Map</h2><?php if(!empty($data['map']['lat']) && !empty($data['map']['lng'])): ?><div class="card"><iframe width="100%" height="360" style="border:0;border-radius:10px" loading="lazy" allowfullscreen src="https://www.google.com/maps?q=<?= urlencode($data['map']['lat'].','.$data['map']['lng']) ?>&output=embed"></iframe></div><?php else: ?><p class="muted">Add lat/lng in admin to show a map.</p><?php endif; ?></section>
+<section class="section" id="faq"><h2>Have a Question?</h2><div class="grid"><?php foreach($data['faqs'] as $qa): ?><div class="card"><strong><?= htmlspecialchars($qa['q'] ?? '') ?></strong><p class="muted" style="white-space:pre-wrap"><?= htmlspecialchars($qa['a'] ?? '') ?></p></div><?php endforeach; ?></div></section>
+</div><?php @include __DIR__.'/../includes/footer.php'; ?>
+<script>const FP=<?= json_encode($data['floor_plans'] ?? []) ?>,tabs=document.getElementById('fpTabs'),list=document.getElementById('fpList');const g={};FP.forEach(p=>{(g[p.bhk||''] ||= []).push(p)});const bhks=Object.keys(g);function show(b){list.innerHTML='';(g[b]||[]).forEach(p=>{const el=document.createElement('div');el.className='card';el.innerHTML=`<img src="${p.image||''}" alt="${p.bhk||''}"><div style="margin-top:8px"><strong>${p.bhk||''}</strong><br><span class="muted">Carpet:</span> ${p.carpet||''}<br><span class="muted">Price:</span> ${p.price||''}</div>`;list.appendChild(el)});[...tabs.children].forEach(t=>t.classList.toggle('active', t.textContent===b));}bhks.forEach((b,i)=>{const t=document.createElement('div');t.className='tab'+(i?'':' active');t.textContent=b;t.onclick=()=>show(b);tabs.appendChild(t)});if(bhks.length) show(bhks[0]);</script>
+</body></html>

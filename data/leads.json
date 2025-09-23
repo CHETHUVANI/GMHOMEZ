@@ -1,0 +1,183 @@
+[
+    {
+        "ts": "2025-09-02T10:17:40+02:00",
+        "ip": "::1",
+        "name": "Chethan D n",
+        "email": "dnchethu77@gmail.com",
+        "phone": "9106362024270",
+        "address": "",
+        "message": "Route Map: Home Loan\r\nCity of property: All Cities\r\nIdentified property: Yes\r\nOccupation: \r\nLoan Amount (₹ lacs): 120000"
+    },
+    {
+        "ts": "2025-09-02T10:18:48+02:00",
+        "ip": "::1",
+        "name": "VEERESH B",
+        "email": "VB137821@gmail.com",
+        "phone": "9109019267785",
+        "address": "",
+        "message": "Route Map: Home Loan\r\nCity of property: All Cities\r\nIdentified property: Yes\r\nOccupation: \r\nLoan Amount (₹ lacs): 10000000000"
+    },
+    {
+        "ts": "2025-09-02T10:20:27+02:00",
+        "ip": "::1",
+        "name": "gayathri",
+        "email": "CHETHAN@gmail.com",
+        "phone": "09353562247",
+        "address": "",
+        "message": "good morning"
+    },
+    {
+        "ts": "2025-09-02T10:24:44+02:00",
+        "ip": "::1",
+        "name": "Chethan D n",
+        "email": "dnchethu77@gmail.com",
+        "phone": "9106362024270",
+        "address": "",
+        "message": "Route Map: Home Loan\r\nCity of property: All Cities\r\nIdentified property: Yes\r\nOccupation: \r\nLoan Amount (₹ lacs): 000001111111111111"
+    },
+    {
+        "ts": "2025-09-02T10:30:46+02:00",
+        "ip": "::1",
+        "name": "Chethan D n",
+        "email": "CHETHAN@CANARABANK",
+        "phone": "09353562247",
+        "address": "",
+        "message": "assdddddddddddddddddddddddddddddddddd"
+    },
+    {
+        "ts": "2025-09-02T10:59:28+02:00",
+        "flow": "Site Visit",
+        "name": "Chethan D n",
+        "email": "",
+        "phone": "+06362024270",
+        "message": "Route Map: Site Visit\r\nPreferred date: 2025-11-11\r\nPreferred time: 13:22\r\nCity: Bangalore",
+        "source": "http:\/\/localhost\/gm-homez\/index.php",
+        "ip": "::1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/139.0.0.0 Safari\/537.36"
+    },
+    {
+        "ts": "2025-09-02T11:02:00+02:00",
+        "flow": "Home Loan",
+        "name": "Chethan D n",
+        "email": "VB137821@gmail.com",
+        "phone": "+9106362024270",
+        "message": "Route Map: Home Loan\r\nCity of property: All Cities\r\nIdentified property: Yes\r\nOccupation: \r\nLoan Amount (₹ lacs): 10",
+        "source": "http:\/\/localhost\/gm-homez\/index.php",
+        "ip": "::1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/139.0.0.0 Safari\/537.36"
+    },
+    {
+        "ts": "2025-09-02T11:05:15+02:00",
+        "flow": "Site Visit",
+        "name": "VEERESH B",
+        "email": "",
+        "phone": "+09019267785",
+        "message": "Route Map: Site Visit\r\nPreferred date: 2025-01-01\r\nPreferred time: 12:00\r\nCity: Bangalore",
+        "source": "http:\/\/localhost\/gm-homez\/index.php",
+        "ip": "::1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/139.0.0.0 Safari\/537.36"
+    },
+    {
+        "ts": "2025-09-03T12:56:51+02:00",
+        "flow": "Home Loan",
+        "name": "Chethan D n",
+        "email": "DNCHETHU77@GMAIL.COM",
+        "phone": "+9106362024270",
+        "message": "Route Map: Home Loan\r\nCity of property: All Cities\r\nIdentified property: Yes\r\nOccupation: \r\nLoan Amount (₹ lacs): 159753",
+        "source": "http:\/\/localhost\/gm-homez\/index.php",
+        "ip": "::1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/139.0.0.0 Safari\/537.36"
+    },
+    {
+        "id": "1756901055777",
+        "name": "chethu",
+        "phone": "6362024270",
+        "message": "bangalore budget 1000000",
+        "source": "chatbot",
+        "created": "2025-09-03T14:04:15+02:00",
+        "ip": "::1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/139.0.0.0 Safari\/537.36"
+    },
+    {
+        "id": "1756901332285",
+        "name": "naveen",
+        "phone": "9482141452",
+        "message": "bangalore",
+        "source": "chatbot",
+        "created": "2025-09-03T14:08:52+02:00",
+        "ip": "::1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/139.0.0.0 Safari\/537.36"
+    },
+    {
+        "id": "1756901634337",
+        "name": "assc",
+        "phone": "1236547899",
+        "message": "ccxd",
+        "source": "chatbot",
+        "created": "2025-09-03T14:13:54+02:00",
+        "ip": "::1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/139.0.0.0 Safari\/537.36"
+    },
+    {
+        "id": "1756901756463",
+        "name": "kk",
+        "phone": "4556654565",
+        "message": "5555",
+        "source": "chatbot",
+        "created": "2025-09-03T14:15:56+02:00",
+        "ip": "::1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/139.0.0.0 Safari\/537.36"
+    },
+    {
+        "id": "1756904751727",
+        "name": "vani",
+        "phone": "1231231232",
+        "message": "102",
+        "source": "chatbot",
+        "created": "2025-09-03T15:05:51+02:00",
+        "ip": "::1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/139.0.0.0 Safari\/537.36"
+    },
+    {
+        "id": "1756905336977",
+        "name": "sssssssssssss",
+        "phone": "1234567890",
+        "message": "0909",
+        "source": "chatbot",
+        "created": "2025-09-03T15:15:36+02:00",
+        "ip": "::1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/139.0.0.0 Safari\/537.36"
+    },
+    {
+        "id": "1756921595294",
+        "name": "f",
+        "phone": "12332123550",
+        "message": "10",
+        "source": "chatbot",
+        "created": "2025-09-03T19:46:35+02:00",
+        "ip": "::1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/139.0.0.0 Safari\/537.36"
+    },
+    {
+        "ts": "2025-09-13T09:43:57+02:00",
+        "flow": "Contact",
+        "name": "Chethan D n",
+        "email": "dnchethu77@gmail.com",
+        "phone": "+06362024270",
+        "message": "hi",
+        "source": "http:\/\/127.0.0.1:8000\/",
+        "ip": "127.0.0.1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/140.0.0.0 Safari\/537.36"
+    },
+    {
+        "ts": "2025-09-13T09:44:00+02:00",
+        "flow": "Contact",
+        "name": "Chethan D n",
+        "email": "dnchethu77@gmail.com",
+        "phone": "+06362024270",
+        "message": "hi",
+        "source": "http:\/\/127.0.0.1:8000\/",
+        "ip": "127.0.0.1",
+        "ua": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/140.0.0.0 Safari\/537.36"
+    }
+]

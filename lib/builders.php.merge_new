@@ -1,0 +1,36 @@
+<?php
+if (!defined('GM_BUILDERS_LIB')) {
+  define('GM_BUILDERS_LIB', 1);
+  if (session_status() === PHP_SESSION_NONE) session_start();
+  $GM_BUILDER_NAMES = [
+    'prestige-group' => 'Prestige Group',
+    'sobha-limited' => 'Sobha Limited',
+    'kolte-patil-developers' => 'Kolte Patil Developers',
+    'godrej-properties' => 'Godrej Properties',
+    'brigade-group' => 'Brigade Group',
+  ];
+  function gm_builder_data_dir() {$d=__DIR__.'/../data/builders'; if(!is_dir($d)) @mkdir($d,0775,true); return $d;}
+  function gm_builder_json_path(string $slug): string { return gm_builder_data_dir().'/'.$slug.'.json'; }
+  function gm_builder_read(string $slug): array {
+    $p=gm_builder_json_path($slug);
+    if(!file_exists($p)) return gm_builder_default($slug);
+    $json=file_get_contents($p)?:''; $data=json_decode($json,true); if(!is_array($data)) $data=[];
+    return array_replace_recursive(gm_builder_default($slug), $data);
+  }
+  function gm_builder_write(string $slug, array $data): bool {
+    $p=gm_builder_json_path($slug); $tmp=$p.'.tmp';
+    $ok=(bool)file_put_contents($tmp, json_encode($data, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES));
+    if($ok){ $ok=@rename($tmp,$p); if(!$ok) $ok=(bool)file_put_contents($p, json_encode($data, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES)); }
+    return $ok;
+  }
+  function gm_is_admin(): bool { return !empty($_SESSION['admin']); }
+  function gm_require_admin(){ if(!gm_is_admin()){ $next=urlencode($_SERVER['REQUEST_URI']??'/'); header('Location: /admin/login.php?next='.$next); exit; } }
+  function gm_builder_default(string $slug): array {
+    global $GM_BUILDER_NAMES;
+    return ['slug'=>$slug,'name'=>$GM_BUILDER_NAMES[$slug]??ucfirst(str_replace('-',' ',$slug)),'last_updated'=>date('Y-m-d'),
+      'stats'=>['total_experience'=>'—','total_projects'=>0,'ongoing_projects'=>0],
+      'overview'=>['city'=>'','location'=>'','about'=>'','rera_id'=>'','banks_supported'=>[],'salient_features'=>[],'key_facts'=>['launch'=>'','possession'=>'']],
+      'floor_plans'=>[],'amenities'=>[],'gallery'=>['images'=>[],'video_url'=>''],'home_loan'=>['loan_amount'=>'5000000','interest_rate'=>'8.5','tenure_years'=>'20'],
+      'map'=>['lat'=>'','lng'=>''],'faqs'=>[] ];
+  }
+}

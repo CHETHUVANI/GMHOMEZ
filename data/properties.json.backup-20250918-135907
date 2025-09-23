@@ -1,0 +1,684 @@
+[
+    {
+        "id": "1755838985906",
+        "title": "vc",
+        "price": "12",
+        "location": "nn",
+        "beds": "225",
+        "baths": "2",
+        "area": "12",
+        "description": "vbh",
+        "image": "prop_3b538947.png",
+        "images": [
+            "prop_8ef3e22d7e.png",
+            "prop_960ee1c048.png",
+            "prop_ab897e7c46.png",
+            "prop_8a26ebc759.png",
+            "prop_f7b998f69c.png",
+            "prop_22ab378347.png"
+        ]
+    },
+    {
+        "id": "1755848833518",
+        "title": "cvvcv",
+        "price": "5343",
+        "location": "bb",
+        "beds": "9",
+        "baths": "56",
+        "area": "6464",
+        "description": "mn",
+        "image": "prop_a18f18dd.png",
+        "images": [
+            "prop_f22b87c911.jpg",
+            "prop_7ad2446e14.png"
+        ]
+    },
+    {
+        "id": "1755855878529",
+        "title": "protiger",
+        "price": 1000000,
+        "location": "hydrabad",
+        "beds": 4,
+        "baths": 12,
+        "area": "1520",
+        "description": "Get a brief summary of RERA & Its benefits here. You can also browse through RERA registered projects in Top cities.",
+        "image": "prop_ac05243b.png"
+    },
+    {
+        "id": "1755876603695",
+        "title": "as",
+        "price": 1,
+        "location": "sss",
+        "beds": 6,
+        "baths": 5,
+        "area": "2sss",
+        "description": "ss",
+        "image": "prop_06c9a2c9.png"
+    },
+    {
+        "id": "1755885881200",
+        "title": "afshgh",
+        "price": 12,
+        "location": "3jnd",
+        "beds": 33,
+        "baths": 23,
+        "area": "122",
+        "description": "jndj",
+        "image": "prop_bb56421e.jpg"
+    },
+    {
+        "id": "1755885914797",
+        "title": "bhfh",
+        "price": 7888,
+        "location": "62fgnmklgno",
+        "beds": 8885,
+        "baths": 855,
+        "area": "855",
+        "description": "gjngj",
+        "image": "prop_79b9933a.jpg"
+    },
+    {
+        "id": "1755885956915",
+        "title": "djbf",
+        "price": 45,
+        "location": "nkgj",
+        "beds": 5,
+        "baths": 5,
+        "area": "5",
+        "description": "fjrn",
+        "image": "prop_b940563c.jpg"
+    },
+    {
+        "id": "1757070497746",
+        "title": "asd",
+        "price": 0,
+        "location": "banaglore",
+        "beds": 1,
+        "baths": 2,
+        "area": "1250",
+        "description": "hi",
+        "image": "prop_2f45f0bb.png"
+    },
+    {
+        "id": "prestige-group-prestige1231",
+        "builder": "Prestige Group",
+        "name": "prestige1231",
+        "city": "Bengaluru",
+        "location": "hydrabad",
+        "status": "ready",
+        "possession_ym": "2027-06",
+        "price_min": 85,
+        "price_max": 95,
+        "details_url": "",
+        "gallery": [
+            "/uploads/builders/prestige-group-prestige1231/img_68bacd98357a4.jpg",
+            "/uploads/builders/prestige-group-prestige1231/img_68bacd9835c17.jpg",
+            "/uploads/builders/prestige-group-prestige1231/img_68bacd9835f04.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 650,
+                "area_max": 691,
+                "price_min": 67.6,
+                "price_max": 71.8
+            },
+            {
+                "bhk": 2,
+                "area_min": 1200,
+                "area_max": 1280,
+                "price_min": 120,
+                "price_max": 130
+            },
+            {
+                "bhk": 3,
+                "area_min": 1450,
+                "area_max": 2005,
+                "price_min": 150,
+                "price_max": 200
+            }
+        ],
+        "type": "apartment",
+        "address": "111, 27th Main Road hsr layout bengaluru",
+        "maps_url": "",
+        "lat": "12.913576",
+        "lng": "77.637714",
+        "images": [
+            "/uploads/builders/prestige-group-prestige1231/img_68bacd98357a4.jpg",
+            "/uploads/builders/prestige-group-prestige1231/img_68bacd9835c17.jpg",
+            "/uploads/builders/prestige-group-prestige1231/img_68bacd9835f04.jpg"
+        ]
+    },
+    {
+        "id": "prestige-group-page",
+        "builder": "Prestige Group",
+        "name": "page",
+        "city": "Bangalore Division",
+        "location": "hydrabad",
+        "status": "ongoing",
+        "possession_ym": "2028-08",
+        "price_min": 1.02,
+        "price_max": 1.2,
+        "details_url": "/property.php?id=prestige-sun-crest",
+        "gallery": [
+            "/uploads/builders/prestige-group-page/img_68bad3820c37a.jpg",
+            "/uploads/builders/prestige-group-page/img_68bad3820c681.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 650,
+                "area_max": 691,
+                "price_min": 67.6,
+                "price_max": 71.8
+            },
+            {
+                "bhk": 2,
+                "area_min": 1200,
+                "area_max": 1280,
+                "price_min": 120,
+                "price_max": 130
+            },
+            {
+                "bhk": 3,
+                "area_min": 1450,
+                "area_max": 2005,
+                "price_min": 150,
+                "price_max": 200
+            }
+        ]
+    },
+    {
+        "id": "prestige-group-builder",
+        "builder": "Prestige Group",
+        "name": "builder",
+        "city": "Yelahanka",
+        "location": "hsr layout",
+        "status": "ongoing",
+        "possession_ym": "2027-06",
+        "price_min": 89,
+        "price_max": 99,
+        "details_url": "\"details_url\": \"/project.php?id=prestige-sun-crest\"",
+        "gallery": [
+            "/uploads/builders/prestige-group-builder/img_68bae6b776be1.jpg",
+            "/uploads/builders/prestige-group-builder/img_68bae6b777627.jpg"
+        ],
+        "units": []
+    },
+    {
+        "id": "asdfh",
+        "name": "Chethan D n",
+        "builder": "Prestige Group",
+        "city": "hsr lay out",
+        "location": "view",
+        "possession_ym": "2025-58",
+        "launch_ym": "2024-02",
+        "status": "ongoing",
+        "price_min": 123,
+        "price_max": 321,
+        "total_units": 123,
+        "total_area_acres": 7600,
+        "rera_id": "ASD341/0893/00/09",
+        "resale": "NO",
+        "approved_banks": [
+            "yes"
+        ],
+        "salient_features": [
+            "line"
+        ],
+        "overview": "yahdvye",
+        "loan_defaults": {
+            "amount_lakhs": 50,
+            "tenure_years": 5,
+            "rate_pa": 9
+        },
+        "lat": null,
+        "lng": null,
+        "ask_enabled": true,
+        "ask_copy": "",
+        "disclaimer": "",
+        "floor_plans": [],
+        "amenities": [],
+        "video_url": null,
+        "gallery": [
+            "/uploads/builders/asdfh/img_68baf140ade1f.jpg",
+            "/uploads/builders/asdfh/img_68baf140aea8f.jpg"
+        ],
+        "details_url": ""
+    },
+    {
+        "id": "1757744868561",
+        "title": "qwe",
+        "price": 12,
+        "location": "Electronic City Phase 1, Bangalore",
+        "beds": 12,
+        "baths": 21,
+        "area": "21",
+        "description": "22",
+        "image": [],
+        "images": [
+            "prop_9f7f85f4.jpg",
+            "prop_6a79585b.png",
+            "prop_ee2af112.png",
+            "prop_f64f54de.png",
+            "prop_4d8f1583.png",
+            "prop_c4fdc437.png"
+        ]
+    },
+    {
+        "id": "sobha-limited-prestige-sun-crest",
+        "builder": "Sobha Limited",
+        "name": "Prestige Sun Crest",
+        "city": "Bangalore Division",
+        "location": "Electronic City Phase 1, Bangalore",
+        "status": "ongoing",
+        "possession_ym": "2025-58",
+        "price_min": 21211111111,
+        "price_max": 12,
+        "details_url": "",
+        "gallery": [
+            "/uploads/builders/sobha-limited-prestige-sun-crest/img_68c52bd3af4f3.jpg",
+            "/uploads/builders/sobha-limited-prestige-sun-crest/img_68c52bd3b0422.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 1,
+                "area_max": 12,
+                "price_min": 2,
+                "price_max": 1223
+            },
+            {
+                "bhk": 1,
+                "area_min": 1,
+                "area_max": 1222,
+                "price_min": 2,
+                "price_max": 122
+            },
+            {
+                "bhk": 1,
+                "area_min": 1,
+                "area_max": 1,
+                "price_min": 2,
+                "price_max": 1211
+            }
+        ]
+    },
+    {
+        "id": "kolte-patil-developers-prestige1231",
+        "builder": "Kolte Patil Developers",
+        "name": "prestige1231",
+        "city": "hsr lay out",
+        "location": "Electronic City Phase 1, Bangalore",
+        "status": "ongoing",
+        "possession_ym": "2025-58",
+        "price_min": 11,
+        "price_max": 11,
+        "details_url": "\"/project.php?id=prestige-sun-crest\"",
+        "gallery": [
+            "/uploads/builders/kolte-patil-developers-prestige1231/img_68c52d498f351.jpg",
+            "/uploads/builders/kolte-patil-developers-prestige1231/img_68c52d4990d6e.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 2,
+                "area_max": 4,
+                "price_min": 5,
+                "price_max": 6
+            },
+            {
+                "bhk": 6,
+                "area_min": 5,
+                "area_max": 4,
+                "price_min": 3,
+                "price_max": 2
+            },
+            {
+                "bhk": 2,
+                "area_min": 3,
+                "area_max": 4,
+                "price_min": 5,
+                "price_max": 6
+            }
+        ]
+    },
+    {
+        "id": "brigade-group-prestige-sun-crest",
+        "builder": "Brigade Group",
+        "name": "Prestige Sun Crest",
+        "city": "Yelahanka",
+        "location": "Electronic City Phase 1, Bangalore",
+        "status": "ongoing",
+        "possession_ym": "2025-58",
+        "price_min": 12,
+        "price_max": 22,
+        "details_url": "",
+        "gallery": [
+            "/uploads/builders/brigade-group-prestige-sun-crest/img_68c52da9924e6.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 1,
+                "area_max": 12,
+                "price_min": 2,
+                "price_max": 1
+            }
+        ]
+    },
+    {
+        "id": "godrej-properties-prestige-sun-crest",
+        "builder": "Godrej Properties",
+        "name": "Prestige Sun Crest",
+        "city": "Yelahanka",
+        "location": "Electronic City Phase 1, Bangalore",
+        "status": "ongoing",
+        "possession_ym": "2028-08",
+        "price_min": 123654,
+        "price_max": 123,
+        "details_url": "",
+        "gallery": [
+            "/uploads/projects/godrej-properties/godrej-properties-prestige-sun-crest/img_68cbc832d5c39.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 1,
+                "area_max": 2,
+                "price_min": 3,
+                "price_max": 6
+            },
+            {
+                "bhk": 2,
+                "area_min": 3,
+                "area_max": 6,
+                "price_min": 5,
+                "price_max": 4
+            },
+            {
+                "bhk": 6,
+                "area_min": 6,
+                "area_max": 89,
+                "price_min": 9,
+                "price_max": 8
+            }
+        ],
+        "type": "apartment",
+        "images": [
+            "/uploads/projects/godrej-properties/godrej-properties-prestige-sun-crest/img_68cbc832d5c39.jpg"
+        ],
+        "address": "111, 27th Main Road",
+        "maps_url": "https://www.google.co.in/maps/place/Sangeetha+Gadgets+-+HSR+Layout-3+(BDA)/@12.9122685,77.647464,14.39z/data=!4m6!3m5!1s0x3bae15e35173c225:0x8f88a520af4dabc8!8m2!3d12.9124613!4d77.6382595!16s%2Fg%2F11j97p83nm?entry=ttu&g_ep=EgoyMDI1MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+        "lat": "",
+        "lng": ""
+    },
+    {
+        "id": "p_68c7df064e6e69.26520058",
+        "name": "prestige1231",
+        "builder": "asass",
+        "city": "Mumbai",
+        "location": "hydrabad",
+        "bhk": "1,2,3,4",
+        "price_min": 1,
+        "price_max": 1,
+        "area_min": 1,
+        "area_max": 1,
+        "possession_ym": "2029-25",
+        "status": "published",
+        "image": "",
+        "gallery": [
+            "/uploads/projects/mumbai/p_68c7df064e6e69.26520058/img_68c934f53185c.jpg",
+            "/uploads/projects/mumbai/p_68c7df064e6e69.26520058/img_68c934f531f7d.jpg"
+        ],
+        "slug": "",
+        "details_url": ""
+    },
+    {
+        "id": "p_68c7df0e4d22c9.48920128",
+        "name": "prestige1231",
+        "builder": "asass",
+        "city": "mumbai",
+        "location": "hydrabad",
+        "bhk": "1,2,3,4",
+        "price_min": 1,
+        "price_max": 1,
+        "area_min": 1,
+        "area_max": 1,
+        "possession_ym": "2029-25",
+        "status": "published",
+        "image": "",
+        "gallery": [
+            "/uploads/projects/asass/p_68c7df0e4d22c9.48920128/img_68c96e55b6bf8.jpg"
+        ],
+        "slug": "",
+        "details_url": ""
+    },
+    {
+        "id": "bangalore-prestige-sun-crest",
+        "builder": "chethan",
+        "name": "Prestige Sun Crest",
+        "city": "Bangalore",
+        "location": "Electronic City Phase 1, Bangalore",
+        "status": "published",
+        "possession_ym": "2028-08",
+        "price_min": 1,
+        "price_max": 1,
+        "details_url": "",
+        "gallery": [
+            "/uploads/projects/bangalore/bangalore-prestige-sun-crest/img_68c7fbd854eb3.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 2,
+                "area_max": 3,
+                "price_min": 4,
+                "price_max": 5
+            },
+            {
+                "bhk": 9,
+                "area_min": 8,
+                "area_max": 7,
+                "price_min": 8,
+                "price_max": 9
+            },
+            {
+                "bhk": 6,
+                "area_min": 5,
+                "area_max": 6,
+                "price_min": 5,
+                "price_max": 6
+            },
+            {
+                "bhk": 5,
+                "area_min": 8,
+                "area_max": 9,
+                "price_min": 6,
+                "price_max": 5
+            },
+            {
+                "bhk": 8,
+                "area_min": 9,
+                "area_max": 4,
+                "price_min": 55,
+                "price_max": 5
+            }
+        ]
+    },
+    {
+        "id": "pune-prestige-sun-crest",
+        "builder": "abcdefgh",
+        "name": "Prestige Sun Crest",
+        "city": "Pune",
+        "location": "hydrabad",
+        "status": "published",
+        "possession_ym": "2025-58",
+        "price_min": 1,
+        "price_max": 1,
+        "details_url": "",
+        "gallery": [
+            "/uploads/projects/pune/pune-prestige-sun-crest/img_68c96d4317bb1.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 1,
+                "area_max": 1,
+                "price_min": 11,
+                "price_max": 1
+            }
+        ]
+    },
+    {
+        "id": "asdf",
+        "builder": null,
+        "name": "asdf",
+        "city": "Bangalore Division",
+        "location": "ffff",
+        "status": "published",
+        "possession_ym": "2025-58",
+        "price_min": 900,
+        "price_max": 999,
+        "details_url": "",
+        "gallery": [
+            "/uploads/projects//asdf/img_68c97411c1ac6.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 9,
+                "area_min": 9,
+                "area_max": 9,
+                "price_min": 9,
+                "price_max": 9
+            }
+        ]
+    },
+    {
+        "id": "mumbai-prestige-sun-crest",
+        "builder": "asass",
+        "name": "Prestige Sun Crest",
+        "city": "Mumbai",
+        "location": "Electronic City Phase 1, Bangalore",
+        "status": "published",
+        "possession_ym": "2027-06",
+        "price_min": 11,
+        "price_max": 11,
+        "details_url": "",
+        "type": "apartment",
+        "gallery": [
+            "/uploads/projects/mumbai/mumbai-prestige-sun-crest/img_68cbad11ee5eb.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 2,
+                "area_max": 3,
+                "price_min": 4,
+                "price_max": 5
+            }
+        ]
+    },
+    {
+        "id": "sobha-limited-zxcv",
+        "builder": "Sobha Limited",
+        "name": "zxcv",
+        "city": "zxcv",
+        "location": "zxcv",
+        "status": "published",
+        "possession_ym": "2028-08",
+        "price_min": 21,
+        "price_max": 12,
+        "details_url": "",
+        "type": "villa",
+        "gallery": [
+            "/uploads/projects/sobha-limited/sobha-limited-zxcv/img_68cbb1f06b1fb.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 2,
+                "area_max": 2,
+                "price_min": 1,
+                "price_max": 1
+            }
+        ]
+    },
+    {
+        "id": "godrej-properties-chethu",
+        "builder": "Godrej Properties",
+        "name": "chethu",
+        "city": "Yelahanka",
+        "location": "Electronic City Phase 1, Bangalore",
+        "status": "published",
+        "possession_ym": "2028-08",
+        "price_min": 12,
+        "price_max": null,
+        "details_url": "",
+        "type": "villa",
+        "address": "Sc st boys engeneering hostel harohalli NAGENAHLLI Yelahanka",
+        "maps_url": "SNITCH - HSR Layout, 1099, 14th Main Rd, South, Sector 3, HSR Layout, Bengaluru, Karnataka 560102",
+        "lat": "12.913576",
+        "lng": "77.637714",
+        "gallery": [
+            "/uploads/projects/godrej-properties/godrej-properties-chethu/img_68cbca01930f0.jpg",
+            "/uploads/projects/godrej-properties/godrej-properties-chethu/img_68cbca0193baa.jpg"
+        ],
+        "images": [
+            "/uploads/projects/godrej-properties/godrej-properties-chethu/img_68cbca01930f0.jpg",
+            "/uploads/projects/godrej-properties/godrej-properties-chethu/img_68cbca0193baa.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 5,
+                "area_max": 6,
+                "price_min": 7,
+                "price_max": 8,
+                "img": "/uploads/projects/godrej-properties/godrej-properties-chethu/units/unit_68cbca01922fd.jpg"
+            },
+            {
+                "bhk": 8,
+                "area_min": 7,
+                "area_max": 6,
+                "price_min": 5,
+                "price_max": 4
+            }
+        ]
+    },
+    {
+        "id": "prestige-group-asdf",
+        "builder": "Prestige Group",
+        "name": "asdf",
+        "city": "Bengaluru",
+        "location": "SC/ST ENGG BOYS HOSTEL yelahaka isro layout",
+        "status": "published",
+        "possession_ym": "",
+        "price_min": 3,
+        "price_max": 3,
+        "details_url": "",
+        "type": "villa",
+        "address": "Sc st boys engeneering hostel harohalli NAGENAHLLI Yelahanka",
+        "maps_url": "google.com/maps?ll=13.136817,77.579334&z=15&t=m&hl=en-IN&gl=US&mapclient=embed&cid=3519577479022949732",
+        "lat": "",
+        "lng": "",
+        "gallery": [
+            "/uploads/projects/prestige-group/prestige-group-asdf/img_68cbe14ed4faf.jpg",
+            "/uploads/projects/prestige-group/prestige-group-asdf/img_68cbe14ed57de.jpg"
+        ],
+        "images": [
+            "/uploads/projects/prestige-group/prestige-group-asdf/img_68cbe14ed4faf.jpg",
+            "/uploads/projects/prestige-group/prestige-group-asdf/img_68cbe14ed57de.jpg"
+        ],
+        "units": [
+            {
+                "bhk": 1,
+                "area_min": 3,
+                "area_max": 4,
+                "price_min": 56,
+                "price_max": 6,
+                "img": "/uploads/projects/prestige-group/prestige-group-asdf/units/unit_68cbe14ed17b2.jpg"
+            }
+        ]
+    }
+]

@@ -1,0 +1,183 @@
+<?php
+// pages/builder_admin.php
+$BASE = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+if ($BASE === '\\' || $BASE === '/') $BASE = '';
+require_once __DIR__ . '/../lib/builders.php';
+@include __DIR__ . '/../config.php'; // optional
+if (!isset($SLUG) || !$SLUG) { http_response_code(404); echo 'Missing builder slug'; exit; }
+
+gm_require_admin();
+$data = gm_builder_read($SLUG);
+$name = $data['name'];
+?><!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title><?= htmlspecialchars($name) ?> · Admin</title>
+<style>
+  :root{--stroke:rgba(148,163,184,.12);--muted:#9fb2c0}
+  body{background:#0b1620;color:#e6f0f6;font-family:Inter,system-ui;margin:0}
+  .wrap{max-width:1100px;margin:0 auto;padding:20px}
+  h1{margin:12px 0 16px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+  .tab{padding:8px 12px;border:1px solid rgba(148,163,184,.3);border-radius:999px;cursor:pointer}
+  .tab.active{background:#173042}
+  .panel{display:none;background:#0f2330;border:1px solid var(--stroke);border-radius:12px;padding:16px;margin:8px 0}
+  .panel.active{display:block}
+  label{display:block;margin:10px 0 6px}
+  input,textarea{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(148,163,184,.25);background:#0e1c27;color:#e6f0f6}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin:6px 0}
+  .btn{background:linear-gradient(90deg,#5eead4,#60a5fa);color:#06202c;border:0;padding:10px 16px;border-radius:999px;font-weight:700;cursor:pointer}
+  .muted{color:var(--muted)}
+  .mini{font-size:.9rem}
+  .chip{display:inline-block;border:1px solid rgba(148,163,184,.35);border-radius:999px;padding:4px 8px;margin:4px 4px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Admin · <?= htmlspecialchars($name) ?></h1>
+  <div class="muted mini">File: /data/builders/<?= htmlspecialchars($SLUG) ?>.json</div>
+
+  <div class="tabs" id="tabs">
+    <div class="tab active">Overview</div>
+    <div class="tab">Stats</div>
+    <div class="tab">Floor Plans</div>
+    <div class="tab">Amenities</div>
+    <div class="tab">Gallery</div>
+    <div class="tab">Home Loan</div>
+    <div class="tab">Map</div>
+    <div class="tab">FAQs</div>
+  </div>
+
+  <form method="post" action="/pages/builder_admin_save.php" id="f">
+    <input type="hidden" name="slug" value="<?= htmlspecialchars($SLUG) ?>">
+
+    <div class="panel active">
+      <div class="grid2">
+        <div>
+          <label>City</label>
+          <input name="overview[city]" value="<?= htmlspecialchars($data['overview']['city']) ?>">
+        </div>
+        <div>
+          <label>Location</label>
+          <input name="overview[location]" value="<?= htmlspecialchars($data['overview']['location']) ?>">
+        </div>
+      </div>
+      <label>About</label>
+      <textarea name="overview[about]" rows="6"><?= htmlspecialchars($data['overview']['about']) ?></textarea>
+      <div class="grid2">
+        <div>
+          <label>RERA ID</label>
+          <input name="overview[rera_id]" value="<?= htmlspecialchars($data['overview']['rera_id']) ?>">
+        </div>
+        <div>
+          <label>Last Updated (YYYY-MM-DD)</label>
+          <input name="last_updated" value="<?= htmlspecialchars($data['last_updated']) ?>">
+        </div>
+      </div>
+      <div class="grid2">
+        <div>
+          <label>Launch</label>
+          <input name="overview[key_facts][launch]" value="<?= htmlspecialchars($data['overview']['key_facts']['launch']) ?>">
+        </div>
+        <div>
+          <label>Possession</label>
+          <input name="overview[key_facts][possession]" value="<?= htmlspecialchars($data['overview']['key_facts']['possession']) ?>">
+        </div>
+      </div>
+      <label>Banks (comma‑separated)</label>
+      <input name="banks_csv" value="<?= htmlspecialchars(implode(', ', $data['overview']['banks_supported'])) ?>">
+      <label>Salient Features (one per line)</label>
+      <textarea name="features_lines" rows="5"><?php foreach($data['overview']['salient_features'] as $f) echo htmlspecialchars($f."\n"); ?></textarea>
+    </div>
+
+    <div class="panel">
+      <div class="grid2">
+        <div><label>Total Experience</label><input name="stats[total_experience]" value="<?= htmlspecialchars($data['stats']['total_experience']) ?>"></div>
+        <div><label>Total Projects</label><input name="stats[total_projects]" value="<?= htmlspecialchars($data['stats']['total_projects']) ?>"></div>
+      </div>
+      <div><label>Ongoing Projects</label><input name="stats[ongoing_projects]" value="<?= htmlspecialchars($data['stats']['ongoing_projects']) ?>"></div>
+    </div>
+
+    <div class="panel" id="fpPanel">
+      <div id="fpRows"></div>
+      <button class="btn" type="button" onclick="addFP()">+ Add Floor Plan</button>
+    </div>
+
+    <div class="panel">
+      <label>Amenities (comma‑separated)</label>
+      <input name="amenities_csv" value="<?= htmlspecialchars(implode(', ', $data['amenities'])) ?>">
+      <div style="margin-top:8px" class="muted mini">
+        <?php foreach($data['amenities'] as $a) echo '<span class="chip">'.htmlspecialchars($a).'</span>'; ?>
+      </div>
+    </div>
+
+    <div class="panel">
+      <label>Gallery Images (one URL per line)</label>
+      <textarea name="gallery_images" rows="6"><?php foreach($data['gallery']['images'] as $g) echo htmlspecialchars($g."\n"); ?></textarea>
+      <label>Video URL (YouTube embed or MP4)</label>
+      <input name="gallery[video_url]" value="<?= htmlspecialchars($data['gallery']['video_url']) ?>">
+    </div>
+
+    <div class="panel">
+      <div class="grid2">
+        <div><label>Loan Amount (₹)</label><input name="home_loan[loan_amount]" value="<?= htmlspecialchars($data['home_loan']['loan_amount']) ?>"></div>
+        <div><label>Interest Rate (%)</label><input name="home_loan[interest_rate]" value="<?= htmlspecialchars($data['home_loan']['interest_rate']) ?>"></div>
+      </div>
+      <div><label>Tenure (years)</label><input name="home_loan[tenure_years]" value="<?= htmlspecialchars($data['home_loan']['tenure_years']) ?>"></div>
+    </div>
+
+    <div class="panel">
+      <div class="grid2">
+        <div><label>Latitude</label><input name="map[lat]" value="<?= htmlspecialchars($data['map']['lat']) ?>"></div>
+        <div><label>Longitude</label><input name="map[lng]" value="<?= htmlspecialchars($data['map']['lng']) ?>"></div>
+      </div>
+    </div>
+
+    <div class="panel" id="faqPanel">
+      <div id="faqRows"></div>
+      <button class="btn" type="button" onclick="addFAQ()">+ Add Q&A</button>
+    </div>
+
+    <div style="margin:18px 0">
+      <button class="btn" type="submit">Save Changes</button>
+      <a class="btn" href="/<?= htmlspecialchars($SLUG) ?>/" style="margin-left:8px;text-decoration:none;display:inline-block">View Public Page</a>
+    </div>
+  </form>
+</div>
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach((t,i)=>t.onclick=()=>{tabs.forEach(x=>x.classList.remove('active'));panels.forEach(p=>p.classList.remove('active'));t.classList.add('active');panels[i].classList.add('active')});
+
+  // Floor Plans dynamic rows
+  const FP = <?= json_encode($data['floor_plans'] ?? []) ?>;
+  const fpRows = document.getElementById('fpRows');
+  function addFP(p={bhk:'',carpet:'',price:'',image:''}){
+    const idx = fpRows.children.length;
+    const row = document.createElement('div'); row.className='row';
+    row.innerHTML = `
+      <input name="floor_plans[${idx}][bhk]" placeholder="2 BHK" value="${p.bhk||''}">
+      <input name="floor_plans[${idx}][carpet]" placeholder="1100 sq.ft" value="${p.carpet||''}">
+      <input name="floor_plans[${idx}][price]" placeholder="₹ 1.2 Cr" value="${p.price||''}">
+      <input name="floor_plans[${idx}][image]" placeholder="/uploads/builders/<?= $SLUG ?>/2bhk-a.jpg" value="${p.image||''}">
+    `;
+    fpRows.appendChild(row);
+  }
+  FP.forEach(addFP);
+
+  // FAQ rows
+  const FAQs = <?= json_encode($data['faqs'] ?? []) ?>;
+  const faqRows = document.getElementById('faqRows');
+  function addFAQ(p={q:'',a:''}){
+    const i = faqRows.children.length;
+    const wrap = document.createElement('div'); wrap.style.margin='8px 0';
+    wrap.innerHTML = `
+      <input name="faqs[${i}][q]" placeholder="Question" value="${(p.q||'').replaceAll('"','&quot;')}">
+      <textarea name="faqs[${i}][a]" rows="3" placeholder="Answer">${p.a||''}</textarea>
+    `;
+    faqRows.appendChild(wrap);
+  }
+  FAQs.forEach(addFAQ);
+</script>
+</body></html>

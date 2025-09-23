@@ -1,0 +1,21 @@
+[
+    {
+        "project": "protiger",
+        "stage": "Under Construction",
+        "txn": "Purchase",
+        "source": "Builder",
+        "value": 300000,
+        "amount": 100000000,
+        "rate": 8.5,
+        "tenure": 20,
+        "name": "Chethan D n",
+        "city": "Yelahanka",
+        "email": "dnchethu77@gmail.com",
+        "phone": "06362024270",
+        "employment": "Salaried",
+        "income": 120000,
+        "down": 30000000,
+        "ip": "127.0.0.1",
+        "ts": "2025-09-17T15:56:54+02:00"
+    }
+]

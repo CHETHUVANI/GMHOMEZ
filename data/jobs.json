@@ -1,0 +1,56 @@
+[
+    {
+        "id": "FE01",
+        "title": "Frontend Developer",
+        "team": "Engineering",
+        "location": "Bengaluru",
+        "type": "Full-time",
+        "summary": "Build fast, delightful UIs for listings & dashboards.",
+        "responsibilities": [
+            "Implement React components",
+            "Optimize performance",
+            "Write clean, tested code"
+        ],
+        "requirements": [
+            "1–3 yrs React",
+            "Tailwind\/vanilla CSS",
+            "REST\/JSON basics"
+        ]
+    },
+    {
+        "id": "PHP02",
+        "title": "PHP Developer",
+        "team": "Engineering",
+        "location": "Remote",
+        "type": "Full-time",
+        "summary": "Own admin panels, APIs and property data pipelines.",
+        "responsibilities": [
+            "Build secure endpoints",
+            "Optimize MySQL queries",
+            "Maintain admin UI"
+        ],
+        "requirements": [
+            "1–3 yrs PHP",
+            "SQL\/MySQL",
+            "MVC\/Vanilla OK"
+        ]
+    },
+    {
+        "id": "SA03",
+        "title": "Sales Advisor",
+        "team": "Sales",
+        "location": "Bengaluru",
+        "type": "Full-time",
+        "summary": "Guide customers from discovery to booking — zero pressure.",
+        "responsibilities": [
+            "Handle inbound leads",
+            "Schedule site visits",
+            "Maintain CRM updates"
+        ],
+        "requirements": [
+            "Good comms",
+            "Real-estate interest",
+            "Freshers welcome"
+        ]
+    }
+]
