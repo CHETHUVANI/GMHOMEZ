@@ -1,7 +1,61 @@
-﻿vendor/
-node_modules/
-uploads/
-.env
-*.log
+﻿# --- OS / Editors ---
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
+
+# --- Dependencies / Builds ---
+node_modules/
+vendor/
+dist/
+build/
+.cache/
+*.map
+
+# --- Env & secrets (never commit) ---
+.env
+.env.*
+*.env
+config/local.php
+*secrets*.php
+*.local.php
+
+# --- Logs / Temp / Cache ---
+*.log
+logs/
+storage/
+cache/
+tmp/
+.temp/
+*.tmp
+
+# --- Composer lock (optional) ---
+# comment the next line if you WANT to lock exact versions
+composer.lock
+
+# --- Frontend artifacts (optional) ---
+*.pid
+*.seed
+
+# --- Project specifics ---
+# Don't commit runtime uploads (they belong to S3/server)
+uploads/*
+# Keep folder itself (so the path exists after clone)
+!uploads/.gitkeep
+
+# If you have demo images you DO want to track:
+# !uploads/demo/**
+# (uncomment line above and put demo assets under uploads/demo)
+
+# Public assets you DO want to track (put your site images here)
+public/assets/
+!public/assets/**
+
+# AWS EB / CI
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# OS-specific
+ehthumbs.db
+Desktop.ini
