@@ -1,4 +1,8 @@
-﻿# Don't commit runtime uploads
-uploads/*
+﻿# --- Project specifics ---
+# Ignore everything in uploads
+uploads/**
+# Keep the folder itself
 !uploads/.gitkeep
+# Unignore the samples directory and everything inside it
+!uploads/samples/
 !uploads/samples/**
