@@ -1,4 +1,4 @@
-﻿name: Deploy to Elastic Beanstalk
+name: Deploy to Elastic Beanstalk
 
 on:
   push:
@@ -8,11 +8,42 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    # 1) Read from Secrets first, then fall back to Repo Variables.
+    #    If still empty, set a placeholder so we can detect it and fail early.
+    env:
+      EB_APP: ${{ secrets.EB_APPLICATION_NAME || vars.EB_APPLICATION_NAME || 'REPLACE_APP' }}
+      EB_ENV: ${{ secrets.EB_ENVIRONMENT_NAME || vars.EB_ENVIRONMENT_NAME || 'REPLACE_ENV' }}
+      AWS_REGION: ${{ secrets.AWS_REGION || vars.AWS_REGION || 'us-east-2' }}
+      # Access keys must be in Secrets (never in vars)
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Add composer/npm steps here if you need them.
+      # 2) Validate inputs & fail early with a clear error
+      - name: Validate EB configuration
+        run: |
+          echo "Validating EB config..."
+          if [ -z "${EB_APP}" ] || [ "${EB_APP}" = "REPLACE_APP" ]; then
+            echo "::error::EB_APPLICATION_NAME is missing (add it in Settings > Secrets and variables > Actions)."
+            exit 1
+          fi
+          if [ -z "${EB_ENV}" ] || [ "${EB_ENV}" = "REPLACE_ENV" ]; then
+            echo "::error::EB_ENVIRONMENT_NAME is missing (add it in Settings > Secrets and variables > Actions)."
+            exit 1
+          fi
+          if [ -z "${AWS_ACCESS_KEY_ID}" ] || [ -z "${AWS_SECRET_ACCESS_KEY}" ]; then
+            echo "::error::AWS credentials are missing (AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY in Secrets)."
+            exit 1
+          fi
+          echo "EB_APP: set"
+          echo "EB_ENV: set"
+          echo "AWS_REGION: ${AWS_REGION}"
+
+      # If you need composer/npm builds, add steps here.
 
       - name: Create source bundle
         run: |
@@ -22,10 +53,10 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v22
         with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: ${{ secrets.EB_APPLICATION_NAME }}
-          environment_name: ${{ secrets.EB_ENVIRONMENT_NAME }}
-          region: ${{ secrets.AWS_REGION }}
+          aws_access_key: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          application_name: ${{ env.EB_APP }}
+          environment_name: ${{ env.EB_ENV }}
+          region: ${{ env.AWS_REGION }}
           version_label: v-${{ github.run_number }}
           deployment_package: app.zip
