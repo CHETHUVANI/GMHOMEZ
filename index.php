@@ -116,48 +116,12 @@ if (!function_exists('_team_fallback_read')) {
 <title>GM HOMEZ — Real Estate</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/override.css?v=6">
 
-<link rel="stylesheet" href="assets/css/override.css?v=5">
 
 
 
 <style>
-  <!-- FINAL background override (loads last) -->
- id="bg-override"
-  /* 1) Page color */
-  html, body {
-    min-height: 100%;
-    background: #0f172a !important;   /* <-- your color */
-    color: #ffffff;
-  }
-
-  /* 2) Nuke common section backgrounds & overlays */
-  body, .site, .wrapper, .content, .main,
-  .header, .site-header, .page-header, .masthead,
-  .hero, .home-hero, .hero-section, .page-hero,
-  .banner, .top-banner, .page-banner, .jumbotron, .cover, .intro,
-  [class*="hero"], [class*="banner"], [class*="bg-"], [class$="-bg"] {
-    background: transparent !important;
-    background-image: none !important;
-  }
-
-  /* 3) Kill pseudo-element overlays */
-  .hero::before, .hero::after,
-  .banner::before, .banner::after,
-  .header::before, .header::after,
-  .page-hero::before, .page-hero::after,
-  [class*="hero"]::before, [class*="hero"]::after,
-  [class*="banner"]::before, [class*="banner"]::after {
-    content: none !important;
-    background: none !important;
-  }
-
-  /* 4) Hide full-bleed background <img> layers */
-  img.bg, .bg-img, .hero-bg, .banner-bg, .bg-cover, .bg-image {
-    display: none !important;
-  }
-
-
   /* ===== Animated gradient border pill button ===== */
 :root{
   --btn-radius: 999px;           /* pill */
@@ -166,11 +130,14 @@ if (!function_exists('_team_fallback_read')) {
   --btn-text: #e6f0f6;           /* text color */
   --spin-speed: 4s;              /* animation speed */
 }
-html, body {
-  min-height: 100%;
-  background: linear-gradient(135deg, #0ea5e9, #7c3aed);
-}
-:root { --bs-body-bg: #0f172a; --bs-body-color: #ffffff; }
+<style id="bg-override">
+  /* Site-wide background color (keeps hero image intact) */
+  html, body {
+    min-height: 100%;
+    background: #0f172a !important;  /* <-- change this color if you want */
+    color: #ffffff;
+  }
+
 
 
 /* allow animating an angle */
@@ -2512,24 +2479,5 @@ document.getElementById('add-builder-btn')?.addEventListener('click', async (e) 
   }
 });
 </script>
-<script>
-  // Remove any inline background-image or bg-* classes after page loads
-  (function killBG() {
-    // a) inline background-image styles
-    document.querySelectorAll('[style*="background-image"]').forEach(function(el){
-      el.style.backgroundImage = 'none';
-      el.style.background = 'transparent';
-    });
-
-    // b) common bg-* classes
-    document.querySelectorAll('.bg-img,.bg-image,.bg-cover,.hero-bg,.banner-bg,img.bg')
-      .forEach(function(el){ el.style.display = 'none'; });
-
-    // c) ensure page color is set
-    document.documentElement.style.setProperty('background', '#0f172a', 'important');
-    document.body.style.setProperty('background', '#0f172a', 'important');
-  })();
-</script>
-
 
 </body></html>
