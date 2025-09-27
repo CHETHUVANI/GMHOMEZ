@@ -126,7 +126,7 @@ if (!function_exists('_team_fallback_read')) {
 :root{
   --btn-radius: 999px;           /* pill */
   --btn-border: 2px;             /* border thickness */
-  --btn-bg: #d7dce2ff;             /* inner fill color */
+  --btn-bg: #1b2633;             /* inner fill color */
   --btn-text: #e6f0f6;           /* text color */
   --spin-speed: 4s;              /* animation speed */
 }
