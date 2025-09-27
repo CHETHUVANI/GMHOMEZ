@@ -1,0 +1,27 @@
+/* GLOBAL page bg */
+html, body {
+  min-height: 100%;
+  background: #0f172a !important;   /* your new page color */
+  color: #ffffff;
+}
+
+/* Kill any page-level background images/overlays */
+body, .site, .wrapper, .content, .main,
+[class*="hero"], [class*="banner"], [class*="header"],
+.top-banner, .page-hero, .page-banner {
+  background-image: none !important;
+  background: transparent !important;
+}
+
+/* Common overlay patterns */
+[class*="hero"]::before,
+[class*="banner"]::before,
+[class*="header"]::before {
+  content: none !important;
+  background: none !important;
+}
+
+/* If someone used a full-bleed <img> as BG */
+.bg-hero, .hero-bg, .banner-bg, img.bg, .bg-cover {
+  display: none !important;
+}
