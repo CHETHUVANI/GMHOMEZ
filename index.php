@@ -131,13 +131,12 @@ if (!function_exists('_team_fallback_read')) {
   --spin-speed: 4s;              /* animation speed */
 }
 <style id="bg-override">
-  /* Site-wide background color (keeps hero image intact) */
   html, body {
     min-height: 100%;
-    background: #0f172a !important;  /* <-- change this color if you want */
-    color: #ffffff;
+    background: #ffffff !important;   /* pure white */
+    color: #111111;                    /* dark text for readability */
   }
-
+  :root { --bs-body-bg: #ffffff; --bs-body-color: #111111; }
 
 
 /* allow animating an angle */
