@@ -1,10 +1,29 @@
+name: Deploy to Elastic Beanstalk
+
+on:
+  push:
+    branches: [ "feat/bg-color" ]   # change to "main" later
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create source bundle
+        run: |
+          zip -r app.zip . \
+            -x ".git/*" ".github/*" "node_modules/*" "vendor/*" "*.log"
+
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v22
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: gmhomezzz
-          environment_name: Gmhomez-env11
-          region: us-east-2
+          application_name: gmhomezzz        # from your EB console
+          environment_name: Gmhomez-env11    # from your EB console
+          region: us-east-2                  # your EB region
           version_label: v-${{ github.run_number }}
           deployment_package: app.zip
