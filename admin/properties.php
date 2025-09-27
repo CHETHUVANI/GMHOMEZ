@@ -164,6 +164,45 @@ if ($APP_BASE === '/' || $APP_BASE === '\\') $APP_BASE = '';
           <div><label>Beds</label><input name="beds" type="number" min="0" step="1"></div>
           <div><label>Baths</label><input name="baths" type="number" min="0" step="1"></div>
         </div>
+        <!-- Exact Location -->
+<div class="form-group">
+  <label for="location">Exact Location / Address</label>
+  <input type="text" class="form-control" id="location" name="location"
+         placeholder="e.g., 4th Floor, 111, 27th Main Rd, HSR Layout, Bengaluru 560102"
+         value="<?= htmlspecialchars($prop['location'] ?? '') ?>" required>
+  <small class="text-muted">Full address as you want it to show on the site.</small>
+</div>
+
+<!-- Optional: precise map pin -->
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="lat">Latitude (optional)</label>
+    <input type="text" class="form-control" id="lat" name="lat"
+           pattern="-?\d{1,3}\.\d+" placeholder="12.9103"
+           value="<?= htmlspecialchars($prop['lat'] ?? '') ?>">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="lng">Longitude (optional)</label>
+    <input type="text" class="form-control" id="lng" name="lng"
+           pattern="-?\d{1,3}\.\d+" placeholder="77.6441"
+           value="<?= htmlspecialchars($prop['lng'] ?? '') ?>">
+  </div>
+</div>
+
+<?php
+  // Quick “Open in Maps” helper
+  $gmapsQ = '';
+  if (!empty($prop['lat']) && !empty($prop['lng'])) {
+    $gmapsQ = $prop['lat'].','.$prop['lng'];
+  } elseif (!empty($prop['location'])) {
+    $gmapsQ = urlencode($prop['location']);
+  }
+?>
+<?php if ($gmapsQ): ?>
+  <a class="btn btn-sm btn-outline-primary" target="_blank"
+     href="https://www.google.com/maps?q=<?= $gmapsQ ?>">Open in Google Maps</a>
+<?php endif; ?>
+
         <label>Description</label>
         <textarea name="description" rows="3"></textarea>
 
