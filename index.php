@@ -126,6 +126,12 @@ if (!function_exists('_team_fallback_read')) {
   --btn-text: #e6f0f6;           /* text color */
   --spin-speed: 4s;              /* animation speed */
 }
+html, body {
+  min-height: 100%;
+  background: linear-gradient(135deg, #0ea5e9, #7c3aed);
+}
+:root { --bs-body-bg: #0f172a; --bs-body-color: #ffffff; }
+
 
 /* allow animating an angle */
 @property --angle {

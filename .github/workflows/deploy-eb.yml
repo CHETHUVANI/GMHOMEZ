@@ -2,39 +2,30 @@
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "feat/bg-color" ]   # change to "main" later
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      EB_APPLICATION: ${{ secrets.EB_APPLICATION }}
-      EB_ENVIRONMENT: ${{ secrets.EB_ENVIRONMENT }}
-      EB_BRANCH: PHP 8.4 running on 64bit Amazon Linux 2023  # <- branch name (no /4.7.5)
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+      # Add composer/npm steps here if you need them.
+
+      - name: Create source bundle
+        run: |
+          zip -r app.zip . \
+            -x ".git/*" ".github/*" "node_modules/*" "vendor/*" "*.log"
+
+      - name: Deploy to Elastic Beanstalk
+        uses: einaregilsson/beanstalk-deploy@v22
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Install EB CLI
-        run: |
-          pip install --upgrade awsebcli
-          eb --version
-
-      - name: Initialize EB (use existing app/env)
-        run: |
-          set -eux
-          # Use platform BRANCH (no build number) so EB CLI doesn't error
-          eb init "$EB_APPLICATION" --region "${{ secrets.AWS_REGION }}" --platform "$EB_BRANCH" --verbose
-          eb use "$EB_ENVIRONMENT" --verbose
-
-      - name: Deploy
-        run: |
-          set -eux
-          eb deploy --staged --verbose
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: ${{ secrets.EB_APPLICATION_NAME }}
+          environment_name: ${{ secrets.EB_ENVIRONMENT_NAME }}
+          region: ${{ secrets.AWS_REGION }}
+          version_label: v-${{ github.run_number }}
+          deployment_package: app.zip
