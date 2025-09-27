@@ -116,7 +116,7 @@ if (!function_exists('_team_fallback_read')) {
 <title>GM HOMEZ — Real Estate</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/override.css?v=6">
+<link rel="stylesheet" href="assets/css/override.css?v=7">
 
 
 
