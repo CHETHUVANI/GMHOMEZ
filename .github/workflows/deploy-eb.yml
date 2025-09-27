@@ -1,37 +1,40 @@
-cd "C:\Users\HP\Downloads\GMHOMEZ-full-package"
-
-@'
 name: Deploy to Elastic Beanstalk
 
 on:
   push:
-    branches: [ "feat/bg-color" ]   # change to "main" later
+    branches: [ "feat/bg-color" ]
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      EB_APP: ${{ secrets.EB_APPLICATION_NAME || vars.EB_APPLICATION_NAME || 'REPLACE_APP' }}
+      EB_ENV: ${{ secrets.EB_ENVIRONMENT_NAME || vars.EB_ENVIRONMENT_NAME || 'REPLACE_ENV' }}
+      AWS_REGION: ${{ secrets.AWS_REGION || vars.AWS_REGION || 'us-east-2' }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
+      - name: Validate EB configuration
+        run: |
+          if [ -z "${EB_APP}" ] || [ "${EB_APP}" = "REPLACE_APP" ]; then
+            echo "::error::EB_APPLICATION_NAME missing"; exit 1; fi
+          if [ -z "${EB_ENV}" ] || [ "${EB_ENV}" = "REPLACE_ENV" ]; then
+            echo "::error::EB_ENVIRONMENT_NAME missing"; exit 1; fi
+          if [ -z "${AWS_ACCESS_KEY_ID}" ] || [ -z "${AWS_SECRET_ACCESS_KEY}" ]; then
+            echo "::error::AWS creds missing"; exit 1; fi
       - name: Create source bundle
         run: |
           zip -r app.zip . \
             -x ".git/*" ".github/*" "node_modules/*" "vendor/*" "*.log"
-
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v22
         with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: ${{ gmhomezzz }}
-          environment_name: ${{ Gmhomez-env11 }}
-          region: ${{ secrets.AWS_REGION }}
+          aws_access_key: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          application_name: ${{ env.EB_APP }}
+          environment_name: ${{ env.EB_ENV }}
+          region: ${{ env.AWS_REGION }}
           version_label: v-${{ github.run_number }}
           deployment_package: app.zip
-'@ | Set-Content -Encoding UTF8 .github\workflows\deploy-eb.yml
-
-git add .github/workflows/deploy-eb.yml
-git commit -m "ci: hardcode EB names to fix empty values"
-git push
