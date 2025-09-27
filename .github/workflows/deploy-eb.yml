@@ -1,4 +1,7 @@
-﻿name: Deploy to Elastic Beanstalk
+cd "C:\Users\HP\Downloads\GMHOMEZ-full-package"
+
+@'
+name: Deploy to Elastic Beanstalk
 
 on:
   push:
@@ -12,8 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Add composer/npm steps here if you need them.
-
       - name: Create source bundle
         run: |
           zip -r app.zip . \
@@ -24,8 +25,13 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: ${{ secrets.EB_APPLICATION_NAME }}
-          environment_name: ${{ secrets.EB_ENVIRONMENT_NAME }}
+          application_name: ${{ gmhomezzz }}
+          environment_name: ${{ Gmhomez-env11 }}
           region: ${{ secrets.AWS_REGION }}
           version_label: v-${{ github.run_number }}
           deployment_package: app.zip
+'@ | Set-Content -Encoding UTF8 .github\workflows\deploy-eb.yml
+
+git add .github/workflows/deploy-eb.yml
+git commit -m "ci: hardcode EB names to fix empty values"
+git push
