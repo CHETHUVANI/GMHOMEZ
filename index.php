@@ -122,6 +122,42 @@ if (!function_exists('_team_fallback_read')) {
 
 
 <style>
+  <!-- FINAL background override (loads last) -->
+ id="bg-override"
+  /* 1) Page color */
+  html, body {
+    min-height: 100%;
+    background: #0f172a !important;   /* <-- your color */
+    color: #ffffff;
+  }
+
+  /* 2) Nuke common section backgrounds & overlays */
+  body, .site, .wrapper, .content, .main,
+  .header, .site-header, .page-header, .masthead,
+  .hero, .home-hero, .hero-section, .page-hero,
+  .banner, .top-banner, .page-banner, .jumbotron, .cover, .intro,
+  [class*="hero"], [class*="banner"], [class*="bg-"], [class$="-bg"] {
+    background: transparent !important;
+    background-image: none !important;
+  }
+
+  /* 3) Kill pseudo-element overlays */
+  .hero::before, .hero::after,
+  .banner::before, .banner::after,
+  .header::before, .header::after,
+  .page-hero::before, .page-hero::after,
+  [class*="hero"]::before, [class*="hero"]::after,
+  [class*="banner"]::before, [class*="banner"]::after {
+    content: none !important;
+    background: none !important;
+  }
+
+  /* 4) Hide full-bleed background <img> layers */
+  img.bg, .bg-img, .hero-bg, .banner-bg, .bg-cover, .bg-image {
+    display: none !important;
+  }
+
+
   /* ===== Animated gradient border pill button ===== */
 :root{
   --btn-radius: 999px;           /* pill */
@@ -2476,5 +2512,24 @@ document.getElementById('add-builder-btn')?.addEventListener('click', async (e) 
   }
 });
 </script>
+<script>
+  // Remove any inline background-image or bg-* classes after page loads
+  (function killBG() {
+    // a) inline background-image styles
+    document.querySelectorAll('[style*="background-image"]').forEach(function(el){
+      el.style.backgroundImage = 'none';
+      el.style.background = 'transparent';
+    });
+
+    // b) common bg-* classes
+    document.querySelectorAll('.bg-img,.bg-image,.bg-cover,.hero-bg,.banner-bg,img.bg')
+      .forEach(function(el){ el.style.display = 'none'; });
+
+    // c) ensure page color is set
+    document.documentElement.style.setProperty('background', '#0f172a', 'important');
+    document.body.style.setProperty('background', '#0f172a', 'important');
+  })();
+</script>
+
 
 </body></html>
